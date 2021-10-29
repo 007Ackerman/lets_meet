@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1048050585465",
+    "project_id": "let-s-meet-d0b53",
+    "storage_bucket": "let-s-meet-d0b53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048050585465:android:4c60a88edfe6aef26729a8",
+        "android_client_info": {
+          "package_name": "com.example.lets_meet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048050585465-tnc2b3u5pf54c5qm0r33ltk98e4hi0pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArR1e7tB46BRkMPnBK1E15_pMcnuHZBHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048050585465-tnc2b3u5pf54c5qm0r33ltk98e4hi0pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
