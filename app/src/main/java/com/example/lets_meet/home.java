@@ -2,7 +2,9 @@ package com.example.lets_meet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -19,19 +21,33 @@ import java.net.URL;
 
 public class home extends AppCompatActivity {
     EditText code;
-    Button join,newmeet;
-
-
+    Button join,newmeet,log;
+    SharedPreferences sharedPreferences;
 
     URL serverurl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
         code=findViewById(R.id.secretcode);
         join=findViewById(R.id.joinmeet);
         newmeet=findViewById(R.id.new1);
+        log=findViewById(R.id.logout);
+
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("key", 0);
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
          try {
              serverurl = new URL("https://meet.jit.si");
              JitsiMeetConferenceOptions defaultoptions;
@@ -50,7 +66,7 @@ public class home extends AppCompatActivity {
              @Override
              public void onClick(View view) {
                  JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder().setRoom(code.getText().toString())
-                         .setWelcomePageEnabled(false).build();
+                         .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
 
                  JitsiMeetActivity.launch(home.this, options);
              }
@@ -60,7 +76,7 @@ public class home extends AppCompatActivity {
              @Override
              public void onClick(View view) {
                  JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom("ABCD")
-                         .setWelcomePageEnabled(false).build();
+                         .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
 
                  JitsiMeetActivity.launch(home.this, options1);
              }

@@ -58,7 +58,7 @@ public class signup extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             database.collection("Users")
-                                    .document().set(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    .document(name).set(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     startActivity(new Intent(signup.this,MainActivity.class));
