@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
         int j = sharedpreferences.getInt("key", 0);
 
         //Default is 0 so autologin is disabled
@@ -39,16 +38,10 @@ public class MainActivity extends AppCompatActivity {
             Intent activity = new Intent(getApplicationContext(), home.class);
             startActivity(activity);
         }
-
-
-
         auth=FirebaseAuth.getInstance();
-
         email=findViewById(R.id.emaillogin);
         password=findViewById(R.id.passlogin);
-
-        sign=findViewById(R.id.button1);
-        login=findViewById(R.id.button);
+        login=findViewById(R.id.button3);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,signup.class));
-            }
-        });
 
 
     }

@@ -23,7 +23,7 @@ public class home extends AppCompatActivity {
     EditText code;
     Button join,newmeet,log;
     SharedPreferences sharedPreferences;
-
+     String str;
     URL serverurl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class home extends AppCompatActivity {
          join.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder().setRoom(code.getText().toString())
+                 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder().setRoom(code.getText().toString()).setVideoMuted(true).setAudioMuted(true)
                          .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
 
                  JitsiMeetActivity.launch(home.this, options);
@@ -75,7 +75,12 @@ public class home extends AppCompatActivity {
          newmeet.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom("ABCD")
+                  User obj=new User();
+                  int rand=(int)(Math.random()*10000);
+                 str=Integer.toString(rand);
+                 //str="chutia";
+                 JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
+                         .setFeatureFlag("requireDisplayName",true)
                          .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
 
                  JitsiMeetActivity.launch(home.this, options1);
