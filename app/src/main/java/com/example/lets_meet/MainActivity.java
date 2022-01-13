@@ -25,19 +25,20 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     Button sign,login;
     FirebaseAuth auth;
+    int j;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
-        int j = sharedpreferences.getInt("key", 0);
 
-        //Default is 0 so autologin is disabled
-        if(j > 0){
-            Intent activity = new Intent(getApplicationContext(), home.class);
-            startActivity(activity);
-        }
+
+
+
+
+
+
         auth=FirebaseAuth.getInstance();
         email=findViewById(R.id.emaillogin);
         password=findViewById(R.id.passlogin);
@@ -56,10 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         {
                             startActivity(new Intent(MainActivity.this,home.class));
                             Toast.makeText(MainActivity.this,"Logged In",Toast.LENGTH_SHORT).show();
-                            autoSave = 1;
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putInt("key", autoSave);
-                            editor.apply();
+
                         }else
                         {
                             Toast.makeText(MainActivity.this,task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
@@ -68,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
 
 
 

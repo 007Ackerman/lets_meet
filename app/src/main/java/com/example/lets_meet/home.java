@@ -42,7 +42,7 @@ public class home extends AppCompatActivity {
                 editor.putInt("key", 0);
                 editor.apply();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), intro.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,7 @@ public class home extends AppCompatActivity {
                   User obj=new User();
                   int rand=(int)(Math.random()*10000);
                  str=Integer.toString(rand);
-                 //str="chutia";
+
                  JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
                          .setFeatureFlag("requireDisplayName",true)
                          .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();

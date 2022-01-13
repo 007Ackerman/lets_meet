@@ -2,12 +2,24 @@ package com.example.lets_meet;
 
 public class User {
     private String name,email,pass,phone;
+    public int a;
 
     public User()
     {
 
     }
 
+    public void mainpage(int y)
+    {
+      this.a=y;
+
+    }
+
+    public int login()
+    {
+
+       return this.a;
+    }
 
     public String getName() {
         return name;
