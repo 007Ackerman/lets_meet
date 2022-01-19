@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
@@ -73,19 +74,24 @@ public class home extends AppCompatActivity {
          });
 
          newmeet.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                  User obj=new User();
-                  int rand=(int)(Math.random()*10000);
-                 str=Integer.toString(rand);
 
-                 JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
-                         .setFeatureFlag("requireDisplayName",true)
-                         .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
+                @Override
+                 public void onClick (View view) {
+                    User obj = new User();
+                    int rand = (int) (Math.random() * 10000);
+                    str = Integer.toString(rand);
+                    if (code.getText().toString() == "") {
+                        JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
+                                .setFeatureFlag("requireDisplayName", true)
+                                .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled", false).build();
 
-                 JitsiMeetActivity.launch(home.this, options1);
-             }
-         });
+                        JitsiMeetActivity.launch(home.this, options1);
+
+                    } else {
+                        Toast.makeText(home.this, "Meeting cannot be hosted with room code.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                });
 
 
 
