@@ -22,6 +22,7 @@ import java.net.URL;
 
 public class home extends AppCompatActivity {
     EditText code;
+    String s;
     Button join,newmeet,log;
     SharedPreferences sharedPreferences;
      String str;
@@ -32,9 +33,18 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         sharedPreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
         code=findViewById(R.id.secretcode);
+        code.setText("");
         join=findViewById(R.id.joinmeet);
         newmeet=findViewById(R.id.new1);
         log=findViewById(R.id.logout);
+
+
+        code.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s="r";
+            }
+        });
 
         log.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +90,8 @@ public class home extends AppCompatActivity {
                     User obj = new User();
                     int rand = (int) (Math.random() * 10000);
                     str = Integer.toString(rand);
-                    if (code.getText().toString() == "") {
+
+                    if (s !="r") {
                         JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
                                 .setFeatureFlag("requireDisplayName", true)
                                 .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled", false).build();
