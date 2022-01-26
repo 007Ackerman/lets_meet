@@ -80,6 +80,8 @@ public class home extends AppCompatActivity {
                          .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled",false).build();
 
                  JitsiMeetActivity.launch(home.this, options);
+                 s="r";
+
              }
          });
 
@@ -93,7 +95,7 @@ public class home extends AppCompatActivity {
 
                     if (s !="r") {
                         JitsiMeetConferenceOptions options1 = new JitsiMeetConferenceOptions.Builder().setRoom(str).setVideoMuted(true).setAudioMuted(true)
-                                .setFeatureFlag("requireDisplayName", true)
+                                .setFeatureFlag("requireDisplayName", true).setFeatureFlag("toolbox.alwaysVisible",true)
                                 .setWelcomePageEnabled(false).setFeatureFlag("invite.enabled", false).build();
 
                         JitsiMeetActivity.launch(home.this, options1);
